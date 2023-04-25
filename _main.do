@@ -28,13 +28,22 @@ if "`c(username)'"=="trejo" {
 	global figure "${dir}\figures"
 }
 
-if "`c(username)'"=="uchikoshi" {
+if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "Macintosh (Intel 64-bit)" {
  glob dir "/Users/uchikoshi/Dropbox (Princeton)/~~GeneticAncestry/~ancestry_identity/"
 ***set files path globals
 	global data "${dir}/Data"
 	global syntax "`c(pwd)'"
 	global table "${dir}/Results/Tables"
 	global figure "${dir}/Results/Figures"
+}
+
+if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "PC (64-bit x86-64)" {
+ glob dir "X:\uchikoshi\"
+***set files path globals
+	global data "${dir}\.Data"
+	global syntax "`c(pwd)'"
+	global table "${dir}\2.Results\Admixture\Tables"
+	global figure "${dir}\2.Results\Admixture\Figures"
 }
 
 ***********************************************************************************
