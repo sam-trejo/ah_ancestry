@@ -8,7 +8,7 @@ set maxvar 16000, perm
 set matsize 5000
 pause on
 capture postutil close
-set scheme burd
+*set scheme burd
 *graph set window fontface "Calibri Light" 
 *set trace on
 *capture log close
@@ -19,7 +19,7 @@ set scheme burd
 
 ***set home folder
 if "`c(username)'"=="trejo" {
-	glob dir "C:\Users\trejo\Dropbox (Princeton)\attract_rank"
+	glob dir "C:\Users\trejo\Dropbox (Princeton)\~ancestry_identity"
 	
 	***set files path globals
 	global data "${dir}\data"
@@ -28,23 +28,13 @@ if "`c(username)'"=="trejo" {
 	global figure "${dir}\figures"
 }
 
-if "`c(username)'"=="bezataddess" {
- glob dir "/Users/bezataddess/Desktop/attractive"
+if "`c(username)'"=="uchikoshi" {
+ glob dir "/Users/uchikoshi/Dropbox (Princeton)/~~GeneticAncestry/~ancestry_identity/"
 ***set files path globals
-	global data "${dir}/data"
+	global data "${dir}/Data"
 	global syntax "`c(pwd)'"
-	global table "${dir}/tables"
-	global figure "${dir}/figures"
-}
-
-if "`c(username)'"=="bt7304" {
- glob dir "~/WLSProject"
-***set files path globals
-	global data_raw "/home/opr/data/dbgap/WLS/" // raw data
-	global data "${dir}/data" // clean data
-	global syntax "~/WLSProject/AttRank"
-	global table "${dir}/tables"
-	global figure "${dir}/figures"
+	global table "${dir}/Results/Tables"
+	global figure "${dir}/Results/Figures"
 }
 
 ***********************************************************************************

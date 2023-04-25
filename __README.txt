@@ -75,10 +75,10 @@ figure out: binscatter_${date}.dta
 
 
 **********************************************************
-****** "F_binscatter"
+****** "F_polynimial"
 **********************************************************
 
-Produces binned scatterplots with fractional polynomials and confidence intervals across SES, gender, immigrant, and language use.
+Produces polynomial scatterplots with fractional polynomials and confidence intervals across SES, gender, immigrant, and language use.
 
 data in: ah_clean.dta
 
