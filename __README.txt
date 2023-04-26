@@ -45,7 +45,7 @@ Produces table of average continental ancestry by race to compare with David Rei
 data in: ah_clean.dta
 
 data out:
-table out: race_table_${date}.dta
+table out: race_table_wh.csv, race_table_bl.csv, race_table_hs.csv, race_table_as.csv
 figure out:
 
 **********************************************************
