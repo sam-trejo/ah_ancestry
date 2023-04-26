@@ -1,11 +1,7 @@
-cd "/Users/fumiyau/Dropbox (Princeton)/~~GeneticAncestry/"
+cd "X:\uchikoshi"
 
-use "Data/GID_link.dta",clear
-rename *,lower
-save "Data/GID_link.dta",replace
-
-use "Data/admixture_race.dta",clear
-append using "Data/GID_link.dta"
+use "0.Data\~Admixture\admixture_race.dta",clear
+append using "0.Data\~Admixture\GID_link.dta"
 
 xtile ses = sespc_al, nq(2)
 
@@ -26,70 +22,70 @@ sum ses noneng female gene1 asa amr eur afr
 **********************************************************************
 
 twoway (fpfitci race_w3_bl afr if ses == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_bl afr if ses == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Low SES" 4 "High SES")) saving("Results/polynomial/ses",replace)
+   (fpfitci race_w3_bl afr if ses == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Low SES" 4 "High SES")) saving("2.Results\Admixture\Figures\polynomial\ses.gph",replace)
 
 twoway (fpfitci race_w3_bl afr if noneng == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_bl afr if noneng == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "English use" 4 "Non-English use")) saving("Results/polynomial/noneng",replace)
+   (fpfitci race_w3_bl afr if noneng == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "English use" 4 "Non-English use")) saving("2.Results\Admixture\Figures\polynomial\noneng.gph",replace)
 
 twoway (fpfitci race_w3_bl afr if female == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_bl afr if female == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Male" 4 "Female")) saving("Results/polynomial/female",replace)
+   (fpfitci race_w3_bl afr if female == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Male" 4 "Female")) saving("2.Results\Admixture\Figures\polynomial\female.gph",replace)
 
 twoway (fpfitci race_w3_bl afr if gene1 == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_bl afr if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("Results/polynomial/gene1",replace)
+   (fpfitci race_w3_bl afr if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("2.Results\Admixture\Figures\polynomial\gene1.gph",replace)
  
-graph combine Results/polynomial/ses.gph Results/polynomial/noneng.gph Results/polynomial/female.gph Results/polynomial/gene1.gph, ycommon saving("Results/polynomial/polynomial_black_hetero",replace)
-graph export "Results/polynomial/polynomial_black_hetero.pdf",replace
+graph combine 2.Results\Admixture\Figures\polynomial\ses.gph 2.Results\Admixture\Figures\polynomial\noneng.gph 2.Results\Admixture\Figures\polynomial\female.gph 2.Results\Admixture\Figures\polynomial\gene1.gph, ycommon saving("2.Results\Admixture\Figures\polynomial\polynomial_black_hetero.gph",replace)
+graph export "2.Results\Admixture\Figures\polynomial\polynomial_black_hetero.pdf",replace
 
 **********************************************************************
 * Asian - Asian ancestry
 **********************************************************************
 twoway (fpfitci race_w3_as asa if ses == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_as asa if ses == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5)  estopts(degree(3))), legend(order(2 "Low SES" 4 "High SES")) saving("Results/polynomial/ses",replace)
+   (fpfitci race_w3_as asa if ses == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5)  estopts(degree(3))), legend(order(2 "Low SES" 4 "High SES")) saving("2.Results\Admixture\Figures\polynomial\ses.gph",replace)
 
 twoway (fpfitci race_w3_as asa if noneng == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_as asa if noneng == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "English use" 4 "Non-English use")) saving("Results/polynomial/noneng",replace)
+   (fpfitci race_w3_as asa if noneng == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "English use" 4 "Non-English use")) saving("2.Results\Admixture\Figures\polynomial\noneng.gph",replace)
 
 twoway (fpfitci race_w3_as asa if female == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_as asa if female == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Male" 4 "Female")) saving("Results/polynomial/female",replace)
+   (fpfitci race_w3_as asa if female == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Male" 4 "Female")) saving("2.Results\Admixture\Figures\polynomial\female.gph",replace)
 
 twoway (fpfitci race_w3_as asa if gene1 == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_as asa if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("Results/polynomial/gene1",replace)
+   (fpfitci race_w3_as asa if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("2.Results\Admixture\Figures\polynomial\gene1.gph",replace)
  
-graph combine Results/polynomial/ses.gph Results/polynomial/noneng.gph Results/polynomial/female.gph Results/polynomial/gene1.gph, ycommon saving("Results/polynomial/polynomial_asian_hetero",replace)
-graph export "Results/polynomial/polynomial_asian_hetero.pdf",replace
+graph combine 2.Results\Admixture\Figures\polynomial\ses.gph 2.Results\Admixture\Figures\polynomial\noneng.gph 2.Results\Admixture\Figures\polynomial\female.gph 2.Results\Admixture\Figures\polynomial\gene1.gph, ycommon saving("2.Results\Admixture\Figures\polynomial\polynomial_asian_hetero.gph",replace)
+graph export "2.Results\Admixture\Figures\polynomial\polynomial_asian_hetero.pdf",replace
 
 **********************************************************************
 * Black - African ancestry
 **********************************************************************
 twoway (fpfitci race_w3_hs afr if ses == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_hs afr if ses == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Low SES" 4 "High SES")) saving("Results/polynomial/ses",replace)
+   (fpfitci race_w3_hs afr if ses == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Low SES" 4 "High SES")) saving("2.Results\Admixture\Figures\polynomial\ses.gph",replace)
 
 twoway (fpfitci race_w3_hs afr if noneng == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_hs afr if noneng == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "English use" 4 "Non-English use")) saving("Results/polynomial/noneng",replace)
+   (fpfitci race_w3_hs afr if noneng == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "English use" 4 "Non-English use")) saving("2.Results\Admixture\Figures\polynomial\noneng.gph",replace)
 
 twoway (fpfitci race_w3_hs afr if female == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_hs afr if female == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Male" 4 "Female")) saving("Results/polynomial/female",replace)
+   (fpfitci race_w3_hs afr if female == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Male" 4 "Female")) saving("2.Results\Admixture\Figures\polynomial\female.gph",replace)
 
 twoway (fpfitci race_w3_hs afr if gene1 == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_hs afr if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("Results/polynomial/gene1",replace)
+   (fpfitci race_w3_hs afr if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("2.Results\Admixture\Figures\polynomial\gene1.gph",replace)
  
-graph combine Results/polynomial/ses.gph Results/polynomial/noneng.gph Results/polynomial/female.gph Results/polynomial/gene1.gph, ycommon saving("Results/polynomial/polynomial_hisp_hetero_african",replace)
-graph export "Results/polynomial/polynomial_hisp_hetero_african.pdf",replace
+graph combine 2.Results\Admixture\Figures\polynomial\ses.gph 2.Results\Admixture\Figures\polynomial\noneng.gph 2.Results\Admixture\Figures\polynomial\female.gph 2.Results\Admixture\Figures\polynomial\gene1.gph, ycommon saving("2.Results\Admixture\Figures\polynomial\polynomial_hisp_hetero_african.gph",replace)
+graph export "2.Results\Admixture\Figures\polynomial\polynomial_hisp_hetero_african.pdf",replace
 
 **********************************************************************
 * Hispanic - American ancestry
 **********************************************************************
 twoway (fpfitci race_w3_hs amr if ses == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_hs amr if ses == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Low SES" 4 "High SES")) saving("Results/polynomial/ses",replace)
+   (fpfitci race_w3_hs amr if ses == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Low SES" 4 "High SES")) saving("2.Results\Admixture\Figures\polynomial\ses.gph",replace)
 
 twoway (fpfitci race_w3_hs amr if noneng == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_hs amr if noneng == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "English use" 4 "Non-English use")) saving("Results/polynomial/noneng",replace)
+   (fpfitci race_w3_hs amr if noneng == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "English use" 4 "Non-English use")) saving("2.Results\Admixture\Figures\polynomial\noneng.gph",replace)
 
 twoway (fpfitci race_w3_hs amr if female == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_hs amr if female == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Male" 4 "Female")) saving("Results/polynomial/female",replace)
+   (fpfitci race_w3_hs amr if female == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "Male" 4 "Female")) saving("2.Results\Admixture\Figures\polynomial\female.gph",replace)
 
 twoway (fpfitci race_w3_hs amr if gene1 == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
-   (fpfitci race_w3_hs amr if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("Results/polynomial/gene1",replace)
+   (fpfitci race_w3_hs amr if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("2.Results\Admixture\Figures\polynomial\gene1.gph",replace)
  
-graph combine Results/polynomial/ses.gph Results/polynomial/noneng.gph Results/polynomial/female.gph Results/polynomial/gene1.gph, ycommon saving("Results/polynomial/polynomial_hisp_hetero_american",replace)
-graph export "Results/polynomial/polynomial_hisp_hetero_american.pdf",replace
+graph combine 2.Results\Admixture\Figures\polynomial\ses.gph 2.Results\Admixture\Figures\polynomial\noneng.gph 2.Results\Admixture\Figures\polynomial\female.gph 2.Results\Admixture\Figures\polynomial\gene1.gph, ycommon saving("2.Results\Admixture\Figures\polynomial\polynomial_hisp_hetero_american.gph",replace)
+graph export "2.Results\Admixture\Figures\polynomial\polynomial_hisp_hetero_american.pdf",replace
