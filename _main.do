@@ -114,8 +114,14 @@ dis "$date"
 ***********************************************************************************
 
 ***import survey data
+if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "PC (64-bit x86-64)" {
 do "${syntax}/A_fake.do"
+}
+if "`c(username)'"=="trejo" {
+do "${syntax}/A_fake.do"
+}
 
+if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "Macintosh (Intel 64-bit)" {
 ***clean survey data
 do "${syntax}/B_clean.do"
 
@@ -124,6 +130,6 @@ do "${syntax}/C_sumstat.do"
 
 ***analysis
 do "${syntax}/D_analysis.do"
-
+}
 
 
