@@ -47,11 +47,11 @@ merge 1:1 aid using "0.Data\~Admixture\ah_plink_subset_unsupervised.dta"
 drop if _merge==2
 *drop _merge 
 
-save "0.Data\~Admixture\analysis_unsupervised.dta",replace
+save "0.Data\~Admixture\ah_merge.dta",replace
 /*----------------------------------------------------*/
    /* [>   Race  <] */ 
 /*----------------------------------------------------*/
-use "0.Data\~Admixture\analysis_unsupervised.dta",clear
+use "0.Data\~Admixture\ah_merge.dta",clear
 * non-hispanic black, non-hispanic white, hispanic, non-hispanic asian, non-hispanic native american, and two or more races
 *keep aid h1gi6a h1gi6b h1gi6c h1gi6d h1gi6e h1gi4
 gen race_w1 = . 

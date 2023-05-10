@@ -38,13 +38,14 @@ if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "Macintosh (Intel 64-bi
 }
 
 if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "PC (64-bit x86-64)" {
- glob dir "X:\uchikoshi\"
+ glob dir "X:\uchikoshi"
 ***set files path globals
 	global data "${dir}\0.Data"
 	global syntax "`c(pwd)'"
 	global table "${dir}\2.Results\Admixture\Tables"
 	global figure "${dir}\2.Results\Admixture\Figures"
 }
+dis "$figure"
 
 ***********************************************************************************
 *** STATA DATE
