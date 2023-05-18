@@ -1,5 +1,3 @@
-use "$data/admixture_race.dta",clear
-
 append using "$data/GID_link.dta"
 
 xtile ses = sespc_al, nq(2)
@@ -32,7 +30,7 @@ twoway (fpfitci race_w3_bl afr if female == 0 ,clcolor(cranberry) estopts(degree
 twoway (fpfitci race_w3_bl afr if gene1 == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
    (fpfitci race_w3_bl afr if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("$figure/polynomial/gene1.gph",replace)
  
-graph combine $figure/polynomial/ses.gph $figure/polynomial/noneng.gph $figure/polynomial/female.gph $figure/polynomial/gene1.gph, ycommon saving("$figurepolynomial/polynomial_black_hetero.gph",replace)
+graph combine "$figure/polynomial/ses.gph" "$figure/polynomial/noneng.gph" "$figure/polynomial/female.gph" "$figure/polynomial/gene1.gph", ycommon saving("$figure/polynomial/polynomial_black_hetero.gph",replace)
 graph export "$figure/polynomial/polynomial_black_hetero.pdf",replace
 
 **********************************************************************
@@ -50,7 +48,7 @@ twoway (fpfitci race_w3_as asa if female == 0 ,clcolor(cranberry) estopts(degree
 twoway (fpfitci race_w3_as asa if gene1 == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
    (fpfitci race_w3_as asa if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("$figure/polynomial/gene1.gph",replace)
  
-graph combine $figure/polynomial/ses.gph $figure/polynomial/noneng.gph $figure/polynomial/female.gph $figure/polynomial/gene1.gph, ycommon saving("$figure/polynomial/polynomial_asian_hetero.gph",replace)
+graph combine "$figure/polynomial/ses.gph" "$figure/polynomial/noneng.gph" "$figure/polynomial/female.gph" "$figure/polynomial/gene1.gph", ycommon saving("$figure/polynomial/polynomial_asian_hetero.gph",replace)
 graph export "$figure/polynomial/polynomial_asian_hetero.pdf",replace
 
 **********************************************************************
@@ -68,7 +66,7 @@ twoway (fpfitci race_w3_hs afr if female == 0 ,clcolor(cranberry) estopts(degree
 twoway (fpfitci race_w3_hs afr if gene1 == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
    (fpfitci race_w3_hs afr if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("$figure/polynomial/gene1.gph",replace)
  
-graph combine $figure/polynomial/ses.gph $figure/polynomial/noneng.gph $figure/polynomial/female.gph $figure/polynomial/gene1.gph, ycommon saving("$figure/polynomial/polynomial_hisp_hetero_african.gph",replace)
+graph combine "$figure/polynomial/ses.gph" "$figure/polynomial/noneng.gph" "$figure/polynomial/female.gph" "$figure/polynomial/gene1.gph", ycommon saving("$figure/polynomial/polynomial_hisp_hetero_african.gph",replace)
 graph export "$figure/polynomial/polynomial_hisp_hetero_african.pdf",replace
 
 **********************************************************************
@@ -86,5 +84,5 @@ twoway (fpfitci race_w3_hs amr if female == 0 ,clcolor(cranberry) estopts(degree
 twoway (fpfitci race_w3_hs amr if gene1 == 0 ,clcolor(cranberry) estopts(degree(3)))  ///  
    (fpfitci race_w3_hs amr if gene1 == 1, clcolor(ebblue) clpattern(dash) lwidth(0.5) estopts(degree(3))), legend(order(2 "1st/2nd generation" 4 "3rd+ generation")) saving("$figure/polynomial/gene1.gph",replace)
  
-graph combine $figure/polynomial/ses.gph $figure/polynomial/noneng.gph $figure/polynomial/female.gph $figure/polynomial/gene1.gph, ycommon saving("$figure/polynomial/polynomial_hisp_hetero_american.gph",replace)
+graph combine "$figure/polynomial/ses.gph" "$figure/polynomial/noneng.gph" "$figure/polynomial/female.gph" "$figure/polynomial/gene1.gph", ycommon saving("$figure/polynomial/polynomial_hisp_hetero_american.gph",replace)
 graph export "$figure/polynomial/polynomial_hisp_hetero_american.pdf",replace

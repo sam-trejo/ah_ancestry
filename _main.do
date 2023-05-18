@@ -113,10 +113,18 @@ dis "$date"
 *** RUN CODE
 ***********************************************************************************
 
-***import survey data
 if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "Macintosh (Intel 64-bit)" {
+***import fake data
 do "${dir}/ah_ancestry/A_fake.do"
+
+***analysis
+do "${dir}/ah_ancestry/D_analysis.do"
+
+***polynomial
+do "${dir}/ah_ancestry/F_polynomial.do"
+
 }
+
 if "`c(username)'"=="trejo" {
 do "${dir}/ah_ancestry/A_fake.do"
 }
