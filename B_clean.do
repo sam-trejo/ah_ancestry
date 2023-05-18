@@ -277,8 +277,15 @@ gen ipw = w4_wc/p
 /*----------------------------------------------------*/
 *keep aid scid female age race* comp* *region skin eur afr asa amr hisp_rated disc prace sprace birace ipw w4_wc 
 
-save "0.Data\~Admixture\ah_clean.dta",replace
+save "$data\ah_clean.dta",replace
 
+******************************************************************
+*mark nomiss
+*markout nomiss race_w3_hs race_w3_wh race_w3_bl race_w3_na race_w3_as
+*keep if nomiss == 1
+*keep aid race_w3_* asa amr eur afr
+save "$data\~Admixture\admixture_race.dta",replace
+******************************************************************
 * mismt_w3*
 
 * analysis mismatch .do

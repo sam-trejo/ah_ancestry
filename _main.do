@@ -29,7 +29,7 @@ if "`c(username)'"=="trejo" {
 }
 
 if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "Macintosh (Intel 64-bit)" {
- glob dir "/Users/uchikoshi/Dropbox (Princeton)/~~GeneticAncestry/~ancestry_identity/"
+ glob dir "/Users/uchikoshi/Dropbox (Princeton)/~~GeneticAncestry/~ancestry_identity"
 ***set files path globals
 	global data "${dir}/Data"
 	global syntax "`c(pwd)'"
@@ -114,11 +114,11 @@ dis "$date"
 ***********************************************************************************
 
 ***import survey data
-if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "PC (64-bit x86-64)" {
-do "${syntax}/A_fake.do"
+if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "Macintosh (Intel 64-bit)" {
+do "${dir}/ah_ancestry/A_fake.do"
 }
 if "`c(username)'"=="trejo" {
-do "${syntax}/A_fake.do"
+do "${dir}/ah_ancestry/A_fake.do"
 }
 
 if "`c(username)'"=="uchikoshi" & "`c(machine_type)'" == "Macintosh (Intel 64-bit)" {

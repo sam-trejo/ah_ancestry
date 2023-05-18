@@ -1,17 +1,3 @@
-clear all
-set maxvar 10000
-cd "X:\uchikoshi"
-use "0.Data\~Admixture\ah_clean.dta",clear
-
-******************************************************************
-mark nomiss
-markout nomiss race_w3_hs race_w3_wh race_w3_bl race_w3_na race_w3_as
-keep if nomiss == 1
-keep aid race_w3_* asa amr eur afr
-save "0.Data\~Admixture\admixture_race.dta",replace
-******************************************************************
-use "0.Data\~Admixture\ah_clean.dta",clear
-
 mark nomiss
 markout nomiss race_w3_hs race_w3_wh race_w3_bl race_w3_na race_w3_as
 keep if nomiss == 1
@@ -75,7 +61,7 @@ est sto model2_`dv'
 mixed race_w3_`dv' (c.afr c.amr c.asa)##(c.female c.age c.noneng c.gene2 c.gene3 c.sespc_al)
 est sto model3_`dv'
 }
-esttab model1_wh model2_wh model3_wh model1_bl model2_bl model3_bl model1_hs model2_hs model3_hs model1_as model2_as model3_as using `"`path'2.Results/Admixture/LPM_full`=subinstr("`c(current_date)'"," ","",.)'.csv"', scalar(N r2) wide se star(# 0.1 * 0.05 ** 0.01 *** 0.001) b(2) label  replace  title("Bivariate Linear Probability Model (Model 1)")
+esttab model1_wh model2_wh model3_wh model1_bl model2_bl model3_bl model1_hs model2_hs model3_hs model1_as model2_as model3_as using `"$table/LPM_full`=subinstr("`c(current_date)'"," ","",.)'.csv"', scalar(N r2) wide se star(# 0.1 * 0.05 ** 0.01 *** 0.001) b(2) label  replace  title("Bivariate Linear Probability Model (Model 1)")
 
 
 * analysis mismatch .do
