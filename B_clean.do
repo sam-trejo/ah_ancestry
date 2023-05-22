@@ -1,57 +1,52 @@
-* Merges and clean raw AH data, generate IPW weights, and saves out a .dta.
-
-* FU's Add Health folder
-cd "X:\uchikoshi"
-
 /*----------------------------------------------------*/
    /* [>   Main analysis files  <] */ 
 /*----------------------------------------------------*/
 
-use "0.Data/wave1all.dta",clear
+use "$data/wave1all.dta",clear
 destring aid, replace
 destring scid,replace
 
-merge 1:1 aid using "0.Data/wave3.dta" 
+merge 1:1 aid using "$data/wave3.dta" 
 keep if _merge==3
 drop _merge 
 
-merge m:1 scid using "0.Data/~Admixture/w1inschool.dta" 
+merge m:1 scid using "$data/~Admixture/w1inschool.dta" 
 keep if _merge !=2 // omit cases only in using
 drop _merge 
 
-merge m:1 scid using "0.Data\~Admixture\w1schinfo.dta"
+merge m:1 scid using "$data/~Admixture/w1schinfo.dta"
 keep if _merge !=2 // omit cases only in using
 drop _merge 
 
-merge 1:1 aid using "0.Data/~Admixture/w3region.dta" 
+merge 1:1 aid using "$data/~Admixture/w3region.dta" 
 keep if _merge !=2 // omit cases only in using
 drop _merge 
 
-merge 1:1 aid using "0.Data/wave4.dta"
+merge 1:1 aid using "$data/wave4.dta"
 keep if _merge==3
 drop _merge 
 
-merge 1:1 aid using "0.Data\~Admixture\w4homewc.dta"
+merge 1:1 aid using "$data/~Admixture/w4homewc.dta"
 keep if _merge==3
 drop _merge 
 
-merge 1:1 aid using "0.Data/edupostx.dta"
+merge 1:1 aid using "$data/edupostx.dta"
 drop if _merge==2
 drop _merge 
 
-merge 1:1 aid using "0.Data/conses.dta"
+merge 1:1 aid using "$data/conses.dta"
 drop if _merge==2
 drop _merge 
 
-merge 1:1 aid using "0.Data\~Admixture\ah_plink_subset_unsupervised.dta"
+merge 1:1 aid using "$data/~Admixture/ah_plink_subset_unsupervised.dta"
 drop if _merge==2
 *drop _merge 
 
-save "0.Data\~Admixture\ah_merge.dta",replace
+save "$data/~Admixture/ah_merge.dta",replace
 /*----------------------------------------------------*/
    /* [>   Race  <] */ 
 /*----------------------------------------------------*/
-use "0.Data\~Admixture\ah_merge.dta",clear
+use "$data/~Admixture/ah_merge.dta",clear
 * non-hispanic black, non-hispanic white, hispanic, non-hispanic asian, non-hispanic native american, and two or more races
 *keep aid h1gi6a h1gi6b h1gi6c h1gi6d h1gi6e h1gi4
 gen race_w1 = . 
@@ -277,14 +272,14 @@ gen ipw = w4_wc/p
 /*----------------------------------------------------*/
 *keep aid scid female age race* comp* *region skin eur afr asa amr hisp_rated disc prace sprace birace ipw w4_wc 
 
-save "$data\ah_clean.dta",replace
+save "$data/ah_clean.dta",replace
 
 ******************************************************************
 *mark nomiss
 *markout nomiss race_w3_hs race_w3_wh race_w3_bl race_w3_na race_w3_as
 *keep if nomiss == 1
 *keep aid race_w3_* asa amr eur afr
-save "$data\~Admixture\admixture_race.dta",replace
+save "$data/~Admixture/admixture_race.dta",replace
 ******************************************************************
 * mismt_w3*
 
